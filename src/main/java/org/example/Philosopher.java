@@ -18,14 +18,20 @@ public class Philosopher {
         private Fork rightFork;
         private Fork leftFork;
         private  Waiter waiter;
+        private int textX;
+        private int textY;
+        private boolean isPaused = false;
 
-        public Philosopher (String name, Fork rightFork, Fork leftFork ,Waiter waiter) {
+
+    public Philosopher (String name, Fork rightFork, Fork leftFork ,Waiter waiter , int textX , int textY) {
             this.name = name;
             this.status = THINKING;
             this.eatingCount = 0;
             this.rightFork = rightFork;
             this.leftFork = leftFork;
             this.waiter = waiter;
+            this.textX = textX;
+            this.textY = textY;
             this.start();
         }
 
@@ -34,6 +40,9 @@ public class Philosopher {
             new Thread(() -> {
                 Random random = new Random();
                 while (true) {
+                    while (isPaused){
+                        Utils.sleep(100);
+                    }
                     Utils.sleep(random.nextInt(5000));
                     waiter.askingForPermission();
                     this.status = WAITING_FOR_FORK_1;
@@ -58,6 +67,18 @@ public class Philosopher {
                 }
             }).start();
         }
+
+    public void pause() {
+        isPaused = true;
+    }
+
+    public void resume() {
+        isPaused = false;
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
 
         public String getName () {
             return this.name;
@@ -94,4 +115,15 @@ public class Philosopher {
     public Waiter getWaiter() {
         return waiter;
     }
+
+
+    public int getTextY() {
+        return textY;
+    }
+
+    public int getTextX() {
+        return textX;
+    }
+
+
 }
