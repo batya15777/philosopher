@@ -21,7 +21,7 @@ public class HomeScreen extends JPanel {
         this.forks[1] = new Fork(1, 300, 400);
         this.forks[2] = new Fork(2, 225, 525);
         this.forks[3] = new Fork(3, 450, 600);
-        this.forks[4] = new Fork(4, 600, 525);
+        this.forks[4] = new Fork(4, 625, 525);
 
         Waiter waiter = new Waiter();
         this.philosophers = new Philosopher[]{
@@ -58,6 +58,7 @@ public class HomeScreen extends JPanel {
                 for (Philosopher p : this.philosophers) {
                     System.out.println(p);
                 }
+                System.out.println("-----------------------");
                 Utils.sleep(1000);
             }
         }).start();

@@ -96,9 +96,9 @@ public class Philosopher {
         };
         return new SimpleDateFormat("HH:mm:ss")
                 .format(new Date())
-                + " Philosopher "
+                + ": "
                 + this.name
-                + " is currently "
+                + " is "
                 + statusText
                 + " (total times he ate: "
                 + this.eatingCount + ")";
