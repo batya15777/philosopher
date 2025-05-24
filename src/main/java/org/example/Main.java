@@ -14,7 +14,7 @@ public class Main {
             jFrame.setResizable(false);
             jFrame.setSize(WIDTH,HEIGHT);
             jFrame.setLocationRelativeTo(null);
-            HomeScreen homeScreen = new HomeScreen(jFrame);
+            HomeScreen homeScreen = new HomeScreen();
             jFrame.add(homeScreen);
             jFrame.setVisible(true);
         });

@@ -1,5 +1,7 @@
 package org.example;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -117,6 +119,25 @@ public class Philosopher {
 
     public int getTextX() {
         return textX;
+    }
+
+    public void drawStatusOrForks(Graphics g) {
+        if (this.status == EATING) {
+            g.setColor(Color.GREEN);
+            g.fillOval(this.textX - 25, this.textY - 40, 20, 20);
+        }
+    }
+
+    public void drawHeldForks(Graphics g, int buttonY) {
+        if (this.status == EATING) {
+            if (rightFork != null) {
+                rightFork.draw(g, this.textX + 60, buttonY - 40);
+            }
+            // Draw left fork above the button
+            if (leftFork != null) {
+                leftFork.draw(g, this.textX - 40, buttonY - 40);
+            }
+        }
     }
 
 }
